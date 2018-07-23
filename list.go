@@ -11,6 +11,5 @@ type List struct {
 // this particular singly-linked list
 type Node struct {
 	data interface{}
-	id   int64
 	next *Node
 }
