@@ -28,6 +28,27 @@ func (l *List) PushFront(data interface{}) {
 	l.length++
 }
 
+// Delete deletes the first node that contains a particular item
+// Delete returns true if a node was deleted, otherwise it returns false
+func (l *List) Delete(item interface{}) bool {
+	if l.Head().Value() == item {
+		l.firstNode = l.Head().Next()
+		l.length--
+		return true
+	}
+	for n := l.Head(); ; n = n.Next() {
+		if n.Next() != nil {
+			if n.Next().Value() == item {
+				n.next = n.Next().Next()
+				l.length--
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+}
+
 // Length returns the length of a singly-linked list
 func (l *List) Length() int64 {
 	return l.length

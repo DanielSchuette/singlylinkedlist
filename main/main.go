@@ -3,11 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/DanielSchuette/singlylinkedlist"
+	sll "github.com/DanielSchuette/singlylinkedlist"
 )
 
 func main() {
-	list := singlylinkedlist.New()
+	// create a new list
+	list := sll.New()
+
+	// add some nodes/elements to the list
 	list.PushBack(1)
 	list.PushBack(2)
 	list.PushBack(3)
@@ -17,7 +20,17 @@ func main() {
 	list.PushFront(-1)
 	list.PushFront(-2)
 	list.PushFront(-3)
+
+	// delete an existing and non-existing item from the list
+	del := list.Delete(11)
+	fmt.Printf("node deleted: %v\n", del)
+	del = list.Delete(-12)
+	fmt.Printf("node deleted: %v\n", del)
+
+	// print length of list
 	fmt.Printf("list length: %v\n", list.Length())
+
+	// print list elements
 	for n := list.Head(); n != nil; n = n.Next() {
 		fmt.Println(n.Value())
 	}
