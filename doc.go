@@ -1,6 +1,5 @@
 /*
-A singly-linked list implementation in Go. Supported methods are 'PushFront' and 'PushBack'. The list keeps
-track of its length. Code example:
+Package singlylinkedlist implements a singly-linked list in Go without third-party libraries. Supported methods are 'PushFront' and 'PushBack'. The list keeps track of its length. Code example:
 
 	func main() {
 		list := singlylinkedlist.New()
