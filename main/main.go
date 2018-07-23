@@ -13,4 +13,7 @@ func main() {
 	list.PushBack(3)
 	list.PushBack(4)
 	fmt.Printf("list length: %v\n", list.Length())
+	for n := list.Head(); n != nil; n = n.Next() {
+		fmt.Println(n.Value())
+	}
 }

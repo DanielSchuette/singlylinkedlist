@@ -1,7 +1,5 @@
 package singlylinkedlist
 
-import "fmt"
-
 // New returns a new singly-linked list
 func New() *List {
 	return &List{nil, 0}
@@ -15,16 +13,12 @@ func (l *List) PushFront(data interface{}) {
 // PushBack adds a node to the front of a singly-linked list
 func (l *List) PushBack(data interface{}) {
 	if l.length == 0 {
-		fmt.Println("current list is length 0")
 		l.firstNode = &Node{data, l.length, nil}
 		l.length++
 		return
 	}
-	fmt.Printf("l.firstNode: %v, l.firstNode.Next(): %v\n", l.firstNode, l.firstNode.Next())
-	for n := l.firstNode; n != nil; n = n.Next() {
-		fmt.Println("checking next node")
+	for n := l.firstNode; ; n = n.Next() {
 		if n.Next() == nil {
-			fmt.Println("node is nil, adding new node")
 			n.next = &Node{data, l.length, nil}
 			l.length++
 			return
@@ -40,4 +34,14 @@ func (l *List) Length() int64 {
 // Next returns the next pointer of a particular node
 func (n *Node) Next() *Node {
 	return n.next
+}
+
+// Head returns a pointer to the head of the singly-linked list
+func (l *List) Head() *Node {
+	return l.firstNode
+}
+
+// Value returns the data element of a particular node
+func (n *Node) Value() interface{} {
+	return n.data
 }
